@@ -63,6 +63,7 @@ options:
 Interval                   : {}/{}
 Decimal                    : {}
 Octaves                    : {}
+Tritaves                   : {}
 Cents                      : {}
 
 Numerator                  : {}
@@ -139,6 +140,7 @@ Just Bohlen Pierce scale   : {}",
 		i.den,
 		i.to_f64(),
 		i.octaves(),
+		i.tritaves(),
 		cents,
 		
 		i.num,

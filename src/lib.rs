@@ -28,6 +28,11 @@ impl Interval {
 		self.to_f64().log2()
 	}
 	
+	pub fn tritaves(&self) -> f64 {
+		//last digit changed from 4 to 5 so that 3/1 is one tritave
+		self.octaves() * 0.6309297535714575
+	}
+	
 	pub fn cents(&self) -> f64 {
 		1200.0 * self.octaves()
 	}
