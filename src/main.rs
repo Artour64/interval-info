@@ -118,7 +118,7 @@ Alpha (3/2)^(1/9)  ~78.0c  : {}
 Beta  (3/2)^(1/11) ~63.8c  : {}
 Gamma (3/2)^(1/20) ~35.1c  : {}
 
-16/15 just semitone        : {}
+16/15 just semitone scale  : {}
 10/9 just minor whole tone : {}
 9/8 just major whole tone  : {}
 8/7 septimal whole tone    : {}
@@ -132,6 +132,7 @@ Non TET Scales:
 Just major scale           : {}
 Just minor scale           : {}
 Just chromatic scale       : {}
+Pythagorean scale          : {}
 Harmonic 12 tone scale     : {}
 Harmonic 16 tone scale     : {}
 Just Bohlen Pierce scale   : {}",
@@ -205,6 +206,7 @@ Just Bohlen Pierce scale   : {}",
 		closest_just_major_scale_note(cents, scale_start_0).to_string(),
 		closest_just_minor_scale_note(cents, scale_start_0).to_string(),
 		closest_just_chromatic_scale_note(cents, scale_start_0).to_string(),
+		closest_pythagorean_19_tone_tritave_scale_note(cents, scale_start_0).to_string(),
 		closest_just_harmonic_12_scale_note(cents, scale_start_0).to_string(),
 		closest_just_harmonic_16_scale_note(cents, scale_start_0).to_string(),
 		closest_just_bp_scale_note(cents, scale_start_0).to_string(),

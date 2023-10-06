@@ -482,6 +482,48 @@ fn just_bp_scale_note_cents(note: u64) -> f64 {
 	scale[(note % 13) as usize] + ((note / 13) as f64 * 1901.9550008653873)
 }
 
+pub fn closest_pythagorean_19_tone_tritave_scale_note(cents: f64, scale_start_0: bool) -> ScaleApproximation {
+	let mut note = 0;
+	let mut offset = f64::MAX;
+	
+	loop {
+		let cents2 = pythagorean_19_tone_tritave_scale_note_cents(note);
+		let offset2 = cents2 - cents;
+		
+		if offset.abs() < offset2.abs() {
+			return ScaleApproximation::new(note - scale_start_0 as u64, offset);
+		}
+		
+		note += 1;
+		offset = offset2;
+	}
+}
+
+fn pythagorean_19_tone_tritave_scale_note_cents(note: u64) -> f64 {
+	let scale: [f64;19] = [
+		0.0,//					1/1			1   / 1
+		90.22499567306306,//	256/243		2^8 / 3^5
+		203.91000173077484,//	9/8			3^2 / 2^3
+		294.13499740383764,//	32/27		2^5 / 3^3
+		407.8200034615497,//	81/64		3^4 / 2^6
+		498.0449991346125,//	4/3			2^2 / 3
+		611.7300051923246,//	729/512		3^6 / 2^9
+		701.9550008653874,//	3/2			3   / 2
+		792.1799965384502,//	128/81		2^7 / 3^4
+		905.8650025961623,//	27/16		3^3 / 2^4
+		996.089998269225,//		16/9		2^4 / 3^2
+		1109.775004326937,//	243/128		3^5 / 2^7
+		1200.0,//				2/1     	2   / 1
+		1290.224995673063,//	512/243		2^9 / 3^5
+		1403.9100017307749,//	9/4			3^2 / 2^2
+		1494.1349974038376,//	64/27		2^6 / 2^3
+		1607.8200034615497,//	81/32		3^4 / 2^5
+		1698.0449991346125,//	8/3			2^3 / 3
+		1811.7300051923246,//	729/256		3^6 / 2^8
+	];
+	scale[(note % 19) as usize] + ((note / 19) as f64 * 1901.9550008653873)
+}
+
 //TODO Refactor find_closest_note and the just_scales_note to use common code. Maybe make a struct that describes a scale
 
 //-----------------------
