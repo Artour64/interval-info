@@ -229,7 +229,7 @@ pub fn closest_root_fifth_note(cents: f64, root: u64, scale_start_0: bool) -> Sc
 }
 
 fn root_fifth_note_cents(root: u64, note: u64) -> f64 {
-	1.5f64.powf(1.0/root as f64).log2() * 1200.0 * note as f64//maybe refactor
+	1.5f64.powf((note as f64)/(root as f64)).log2() * 1200.0//maybe refactor
 }
 
 pub fn closest_just_stack_note(cents: f64, interval: &Interval, scale_start_0: bool) -> ScaleApproximation {
