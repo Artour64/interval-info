@@ -81,8 +81,8 @@ Equal Temperament Approximations:
 Scale / EDO / TET          : note  |  cents off
 12 standard semi tone scale: {}
 24 quarter tone scale      : {}
-19 ~ 3rd comma meantone ext: {}
-31 ~ 4th comma meantone ext: {}
+19 ~ 1/3 comma meantone ext: {}
+31 ~ 1/4 comma meantone ext: {}
 41                         : {}
 53                         : {}
 
@@ -132,7 +132,8 @@ Just major scale           : {}
 Just minor scale           : {}
 Just chromatic scale       : {}
 Harmonic 12 tone scale     : {}
-Harmonic 16 tone scale     : {}",
+Harmonic 16 tone scale     : {}
+Just Bohlen Pierce scale   : {}",
 		
 		i.num,
 		i.den,
@@ -204,5 +205,6 @@ Harmonic 16 tone scale     : {}",
 		closest_just_chromatic_scale_note(cents, scale_start_0).to_string(),
 		closest_just_harmonic_12_scale_note(cents, scale_start_0).to_string(),
 		closest_just_harmonic_16_scale_note(cents, scale_start_0).to_string(),
+		closest_just_bp_scale_note(cents, scale_start_0).to_string(),
 	);
 }

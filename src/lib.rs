@@ -441,7 +441,43 @@ fn just_harmonic_16_scale_note_cents(note: u64) -> f64 {
 	scale[(note % 16) as usize] + ((note / 16) * 1200) as f64
 }
 
-//TODO Just BP Scale
+pub fn closest_just_bp_scale_note(cents: f64, scale_start_0: bool) -> ScaleApproximation {
+	let mut note = 0;
+	let mut offset = f64::MAX;
+	
+	loop {
+		let cents2 = just_bp_scale_note_cents(note);
+		let offset2 = cents2 - cents;
+		
+		if offset.abs() < offset2.abs() {
+			return ScaleApproximation::new(note - scale_start_0 as u64, offset);
+		}
+		
+		note += 1;
+		offset = offset2;
+	}
+}
+
+fn just_bp_scale_note_cents(note: u64) -> f64 {
+	let scale: [f64;13] = [
+		0.0,//					1/1
+		133.23757486649274,//	27/25
+		301.84652039515726,//	25/21
+		435.08409526165,//		9/7
+		582.51219260429,//		7/5
+		736.930615656807,//		75/49
+		884.3587129994474,//	5/3
+		1017.5962878659401,//	9/5
+		1165.0243852085803,//	49/25
+		1319.442808261097,//	15/7
+		1466.8709056037378,//	7/3
+		1600.10848047023,//		63/25
+		1768.7174259988947,//	25/9
+	];
+	scale[(note % 13) as usize] + ((note / 13) as f64 * 1901.9550008653873)
+}
+
+//TODO Refactor find_closest_note and the just_scales_note to use common code. Maybe make a struct that describes a scale
 
 //-----------------------
 
