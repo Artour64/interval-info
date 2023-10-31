@@ -10,7 +10,7 @@ Intervals not written in simplest form will automatically be simplified.
 Intervals that have the denominator smaller than the numerator will automatically be flipped.  
 Invalid arguments are ignored.  
 
-###Options
+### Options
 -h --help  
  Display the help message.  
 
