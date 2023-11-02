@@ -18,7 +18,7 @@ fn main() {
 		return;
 	}
 	
-	if args.is_empty() || args.contains(&"-h".to_string()) || args.contains(&"--help".to_string()) {
+	if args.contains(&"-h".to_string()) || args.contains(&"--help".to_string()) {
 		println!(
 			"\
 help:
