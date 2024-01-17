@@ -237,7 +237,8 @@ pub fn closest_just_stack_note(cents: f64, interval: &Interval, scale_start_0: b
 	let mut offset = f64::MAX;
 	
 	loop {
-		let cents2 = just_stack_note_cents(interval, note);
+		//let cents2 = just_stack_note_cents(interval, note);//change back to this one when it no longer integer overflows
+		let cents2 = just_stack_note_cents_simple(interval, note);
 		let offset2 = cents2 - cents;
 		
 		if offset.abs() < offset2.abs() {
@@ -249,11 +250,19 @@ pub fn closest_just_stack_note(cents: f64, interval: &Interval, scale_start_0: b
 	}
 }
 
+/*
+//TODO check if integer will overflow, and use the other one if so
 fn just_stack_note_cents(i: &Interval, note: u64) -> f64 {
 	Interval::new(
 		(i.num as u128).pow(note as u32) as u64,
 		(i.den as u128).pow(note as u32) as u64
 	).cents()
+}
+*/
+
+//unlike the other one, will not integer overflow
+fn just_stack_note_cents_simple(i: &Interval, note: u64) -> f64 {
+	i.cents() * note as f64
 }
 
 pub fn closest_tritave_19_note(cents: f64, scale_start_0: bool) -> ScaleApproximation {
